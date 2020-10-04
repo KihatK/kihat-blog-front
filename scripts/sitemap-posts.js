@@ -4,8 +4,8 @@ const prettier = require('prettier');
 
 const getDate = new Date().toISOString();
 
-const fetchUrl = 'https://kihat.ga/api/posts/all';
-const MY_DOMAIN = 'https://kihat.ga';
+const fetchUrl = 'https://api.kihat.tk/api/posts/all';
+const MY_DOMAIN = 'https://kihat.tk';
 
 const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
 
