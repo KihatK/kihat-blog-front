@@ -7,7 +7,7 @@ import postlist from './postlist';
 import user from './user';
 import image from './image';
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? `https://kihat.ga/api` : 'http://localhost:3060/api';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? `https://api.kihat.tk/api` : 'http://localhost:3060/api';
 
 export default function* rootSaga() {
     yield all([
