@@ -174,6 +174,7 @@ export default (state = initialState, action: UserAction): UserState => {
             }
             case LOG_OUT_SUCCESS: {
                 draft.me = null;
+                draft.isLoggedIn = false;
                 break;
             }
             case LOG_OUT_FAILURE: {

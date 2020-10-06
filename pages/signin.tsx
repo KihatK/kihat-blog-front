@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Router from 'next/router';
 import { useSelector } from 'react-redux';
@@ -16,16 +16,9 @@ const SignIn = () => {
     const nickname = useSelector((state: RootState) => state.user.me?.nickname);
     const { isLoggedIn } = useSelector((state: RootState) => state.user);
 
-    const countRef = useRef(false);
-
     useEffect(() => {
-        if (!countRef.current) {
-            countRef.current = true;
-        }
-        else {
-            if (isLoggedIn) {
-                Router.push('/');
-            }
+        if (isLoggedIn) {
+            Router.push('/');
         }
     }, [isLoggedIn]);
 
