@@ -11,7 +11,7 @@ import 'draft-js/dist/Draft.css';  //기본 draft-js css 적용
 import 'draft-js-static-toolbar-plugin/lib/plugin.css';  //static toolbar css 적용
 import 'draft-js-alignment-plugin/lib/plugin.css';  //alignmenttool css 적용
 import 'draft-js-code/demo/editor.css';  //draft.css 외에 필요한 css 여기서 수정
-import 'prismjs/themes/prism.css'; // add prism.css to add highlights
+import '../prismjs/prism.css'; // add prism.css to add highlights
 
 interface Props extends AppProps {
     Component: React.FC,
