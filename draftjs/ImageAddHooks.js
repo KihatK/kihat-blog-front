@@ -104,7 +104,6 @@ const ImageAdd = ({ onChange, editorState, modifier }) => {
     }, [editorState, imageUrl]);
 
     const changeUrl = useCallback((evt) => {
-        console.log('file', evt.target.files);
         setUrl(evt.target.value);
         const formData = new FormData();
         [].forEach.call(evt.target.files, (f) => {
