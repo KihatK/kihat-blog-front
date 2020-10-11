@@ -23,7 +23,6 @@ function* signup(action: SignupRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: SIGN_UP_FAILURE,
             error: e.response?.data,
@@ -50,7 +49,6 @@ function* login(action: LoginRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: LOG_IN_FAILURE,
             error: e.response?.data,
@@ -76,7 +74,6 @@ function* logout() {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: LOG_OUT_FAILURE,
             error: e,
@@ -103,7 +100,6 @@ function* loadUser() {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: LOAD_USER_FAILURE,
             error: e,
@@ -130,7 +126,6 @@ function* bookmarkPost(action: BookmarkPostRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: BOOKMARK_POST_FAILURE,
             error: e,
@@ -157,7 +152,6 @@ function* unbookmarkPost(action: UnbookmarkPostRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: UNBOOKMARK_POST_FAILURE,
             error: e,

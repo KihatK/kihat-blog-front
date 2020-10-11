@@ -26,7 +26,6 @@ function* getBcategory() {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: GET_BCATEGORY_FAILURE,
             error: e,
@@ -53,7 +52,6 @@ function* addBcategory(action: AddBcategoryRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: ADD_BCATEGORY_FAILURE,
             error: e,
@@ -81,7 +79,6 @@ function* addScategory(action: AddScategoryRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: ADD_SCATEGORY_FAILURE,
             error: e,
@@ -106,7 +103,6 @@ function* getScategoryList() {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: GET_SCATEGORYLIST_FAILURE,
             error: e,
@@ -135,7 +131,6 @@ function* changeBcategoryOrder(action: ChangeBcategoryOrderRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: CHANGE_BCATEGORY_ORDER_FAILURE,
             error: e,
@@ -164,7 +159,6 @@ function* editBcategory(action: EditBcategoryRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: EDIT_BCATEGORY_FAILURE,
         });
@@ -195,7 +189,6 @@ function* removeBcategory(action: RemoveBcategoryRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: REMOVE_BCATEGORY_FAILURE,
         });
@@ -227,7 +220,6 @@ function* editScategory(action: EditScategoryRequestAction) {
         
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: EDIT_SCATEGORY_FAILURE,
             error: e,
@@ -259,7 +251,6 @@ function* removeScategory(action: RemoveScategoryRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: REMOVE_SCATEGORY_FAILURE,
         });

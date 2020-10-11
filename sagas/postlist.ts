@@ -18,7 +18,6 @@ function* getCategoryPosts(action: GetCategoryPostsRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: GET_CATEGORY_POSTS_FAILURE,
             error: e,

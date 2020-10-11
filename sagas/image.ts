@@ -20,7 +20,6 @@ function* uploadImage(action: UploadImageRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: UPLOAD_IMAGE_FAILURE,
             error: e,

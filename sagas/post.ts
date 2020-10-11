@@ -26,7 +26,6 @@ function* addComment(action: AddCommentRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: ADD_COMMENT_FAILURE,
             error: e,
@@ -53,7 +52,6 @@ function* addPost(action: AddPostRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: ADD_POST_FAILURE,
             error: e,
@@ -78,7 +76,6 @@ function* getPosts() {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: GET_POSTS_FAILURE,
             error: e,
@@ -106,7 +103,6 @@ function* getPost(action: GetPostRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: GET_POST_FAILURE,
             error: e,
@@ -133,7 +129,6 @@ function* removePost(action: RemovePostRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: REMOVE_POST_FAILURE,
             error: e,
@@ -159,7 +154,6 @@ function* editPost(action: EditPostRequestAction) {
         });
     }
     catch (e) {
-        console.error(e);
         yield put({
             type: EDIT_POST_FAILURE,
             error: e,
