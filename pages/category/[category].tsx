@@ -19,7 +19,7 @@ const Category = () => {
     return (
         <>
             <StyledH1>{category}</StyledH1>
-            <CategoryListContent/>
+            <CategoryListContent name={category} />
         </>
     );
 }
