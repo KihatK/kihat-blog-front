@@ -28,13 +28,18 @@ const CategoryList = ({ category }: CategoryListProps) => {
 
     const addCategory = useCallback(() => {
         const newCategory: string | null = prompt('카테고리의 이름을 입력하세요');
-        const order = category.Scategories ? category.Scategories.length + 1 : 1;
-        dispatch({
-            type: ADD_SCATEGORY_REQUEST,
-            Bcategory: category.name,
-            data: newCategory,
-            order,
-        });
+        if (newCategory) {
+          const order = category.Scategories ? category.Scategories.length + 1 : 1;
+          dispatch({
+              type: ADD_SCATEGORY_REQUEST,
+              Bcategory: category.name,
+              data: newCategory,
+              order,
+          });
+        }
+        else {
+          alert('카테고리 만들기가 취소되었습니다.');
+        }
     }, [category]);
 
     return (
