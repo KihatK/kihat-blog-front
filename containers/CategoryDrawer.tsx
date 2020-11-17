@@ -19,12 +19,17 @@ const CategoryDrawer = ({ visible, onClose }: CategoryDrawerProps) => {
 
     const addCategory = useCallback(() => {
         const newCategory: string | null = prompt('카테고리의 이름을 입력하세요');
-        const order = bcategory.length + 1;
-        dispatch({
-            type: ADD_BCATEGORY_REQUEST,
-            data: newCategory,
-            order,
-        });
+        if (newCategory) {
+          const order = bcategory.length + 1;
+          dispatch({
+              type: ADD_BCATEGORY_REQUEST,
+              data: newCategory,
+              order,
+          });
+        }
+        else {
+          alert('카테고리 만들기가 취소되었습니다.');
+        }
     }, [bcategory]);
 
     return (
