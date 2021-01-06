@@ -8,6 +8,7 @@ import { RootState } from '../reducers';
 import { StyledInput } from '../style/pages/newpost';
 
 const DraftEditor = dynamic(() => import('../containers/DraftEditor'));
+const Editor = dynamic(() => import('../containers/Editor'));
 
 const NewPostContent = () => {
     const nickname = useSelector((state: RootState) => state.user.me?.nickname);
@@ -72,7 +73,7 @@ const NewPostContent = () => {
                 <Select.Option value="cpp">C++</Select.Option>
                 <Select.Option value="none">None</Select.Option>
             </Select>
-            <DraftEditor nickname={nickname} title={title} category={category} language={language} />
+            <Editor nickname={nickname} title={title} category={category} language={language} />
         </main>
     );
 }

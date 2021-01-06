@@ -16,3 +16,19 @@ blockquote {
     margin: 16px 0;
     padding: 10px 20px;
 }
+
+div.post pre {
+  position: relative;
+  border-left: 10px solid #358ccb;
+  box-shadow: -1px 0 0 0 #358ccb, 0 0 0 1px #dfdfdf;
+  background-color: #fdfdfd;
+  background-image: linear-gradient(transparent 50%,rgba(69,142,209,.04) 0);
+  background-size: 3em 3em;
+  background-origin: content-box;
+  background-attachment: local;
+  max-height: inherit;
+  height: inherit;
+  padding: 0 1em;
+  display: block;
+  overflow: auto;
+}

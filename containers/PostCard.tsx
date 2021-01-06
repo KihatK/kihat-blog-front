@@ -83,7 +83,7 @@ const PostCard = ({ post }: PostProps) => {
             }
             bordered={true}
         >
-            <ContentDiv dangerouslySetInnerHTML={{ __html: post.content }}>
+            <ContentDiv className="post" dangerouslySetInnerHTML={{ __html: post.content }}>
 
             </ContentDiv>
             <DragA onClick={clickToggleComment}>

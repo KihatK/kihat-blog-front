@@ -57,13 +57,13 @@ const AppLayout = ({ children }: Props) => {
             </StyledMenu>
             <StyledImg src="https://kihat-blog.s3.amazonaws.com/original/laptop-1209008.jpg" alt="main-page-image"/>
             <StyledRow>
-                <Col xs={24} md={4}>
+                <Col xs={24} md={2}>
                     
                 </Col>
-                <MainContentCol xs={24} md={16}>
+                <MainContentCol xs={24} md={20}>
                     {children}
                 </MainContentCol>
-                <Col xs={24} md={4}>
+                <Col xs={24} md={2}>
 
                 </Col>
             </StyledRow>

@@ -7,6 +7,7 @@ import wrapper from '../store/makeStore';
 
 import 'antd/dist/antd.css';  //antd 스타일 적용
 import '../css/style.css';  //body 태그에 #F0F0F0 적용
+import 'suneditor/dist/css/suneditor.min.css';  //suneditor 적용
 import 'draft-js/dist/Draft.css';  //기본 draft-js css 적용
 import 'draft-js-static-toolbar-plugin/lib/plugin.css';  //static toolbar css 적용
 import 'draft-js-alignment-plugin/lib/plugin.css';  //alignmenttool css 적용

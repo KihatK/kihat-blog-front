@@ -199,29 +199,32 @@ export default (state = initialState, action: PostAction): PostState => {
                 break;
             }
             case GET_POSTS_SUCCESS: {
+                // action.data.forEach((p) => {
+                //     const toContentState = convertFromRaw(JSON.parse(p.content));
+                //     const toEditorState = EditorState.createWithContent(toContentState);
+                //     const inlineStyles = exporter(toEditorState);
+                //     const options = {
+                //         inlineStyles,
+                //         blockStyleFn: (block) => {
+                //             if (block.type === 'code-block') {
+                //                 return {
+                //                     attributes: { class: `language-${p.language}` },
+                //                 }
+                //             }
+                //             else if (block.type === 'atomic') {
+                //                 return {
+                //                     attributes: { class: `image-width-100` },
+                //                 }
+                //             }
+                //         }
+                //     }
+                //     let html = stateToHTML(toEditorState.getCurrentContent(), options);
+                //     p.content = html;
+                //     draft.mainPosts.push(p);
+                // });
                 action.data.forEach((p) => {
-                    const toContentState = convertFromRaw(JSON.parse(p.content));
-                    const toEditorState = EditorState.createWithContent(toContentState);
-                    const inlineStyles = exporter(toEditorState);
-                    const options = {
-                        inlineStyles,
-                        blockStyleFn: (block) => {
-                            if (block.type === 'code-block') {
-                                return {
-                                    attributes: { class: `language-${p.language}` },
-                                }
-                            }
-                            else if (block.type === 'atomic') {
-                                return {
-                                    attributes: { class: `image-width-100` },
-                                }
-                            }
-                        }
-                    }
-                    let html = stateToHTML(toEditorState.getCurrentContent(), options);
-                    p.content = html;
                     draft.mainPosts.push(p);
-                });
+                })
                 break;
             }
             case GET_POSTS_FAILURE: {
@@ -243,26 +246,26 @@ export default (state = initialState, action: PostAction): PostState => {
                     break;
                 }
                 else {  //글을 볼 때 html 상태
-                    const toContentState = convertFromRaw(JSON.parse(action.data.content));
-                    const toEditorState = EditorState.createWithContent(toContentState);
-                    const inlineStyles = exporter(toEditorState);
-                    const options = {
-                        inlineStyles,
-                        blockStyleFn: (block) => {
-                            if (block.type === 'code-block') {
-                                return {
-                                    attributes: { class: `language-${action.data.language}` },
-                                }
-                            }
-                            else if (block.type === 'atomic') {
-                                return {
-                                    attributes: { class: `image-width-100` }
-                                }
-                            }
-                        }
-                    }
-                    let html = stateToHTML(toEditorState.getCurrentContent(), options);
-                    action.data.content = html;
+                    // const toContentState = convertFromRaw(JSON.parse(action.data.content));
+                    // const toEditorState = EditorState.createWithContent(toContentState);
+                    // const inlineStyles = exporter(toEditorState);
+                    // const options = {
+                    //     inlineStyles,
+                    //     blockStyleFn: (block) => {
+                    //         if (block.type === 'code-block') {
+                    //             return {
+                    //                 attributes: { class: `language-${action.data.language}` },
+                    //             }
+                    //         }
+                    //         else if (block.type === 'atomic') {
+                    //             return {
+                    //                 attributes: { class: `image-width-100` }
+                    //             }
+                    //         }
+                    //     }
+                    // }
+                    // let html = stateToHTML(toEditorState.getCurrentContent(), options);
+                    // action.data.content = html;
                     draft.singlePost = action.data;
                     break;
                 }
