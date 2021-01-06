@@ -7,7 +7,6 @@ import { Select } from 'antd';
 import { RootState } from '../reducers';
 import { StyledInput } from '../style/pages/editid';
 
-const DraftEditorEdit = dynamic(() => import('../containers/DraftEditorEdit'));
 const EditorEdit = dynamic(() => import('../containers/EditorEdit'));
 
 const EditPostContent = () => {
