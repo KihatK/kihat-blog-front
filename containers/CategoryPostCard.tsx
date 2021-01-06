@@ -4,7 +4,6 @@ import Router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Popover } from 'antd';
 import moment from 'moment';
-import Prismjs from '../prismjs/prism';
 
 import { RootState } from '../reducers';
 import { REMOVE_POST_REQUEST } from '../reducers/post';
@@ -66,10 +65,6 @@ const CategoryPostCard = ({ post }: PostProps) => {
             data: uuid,
         });
     }, []);
-
-    useEffect(() => {
-        Prismjs.highlightAll();
-    }, [post]);
 
     useEffect(() => {
         if (!countRef.current) {

@@ -1,8 +1,7 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import { Popover } from 'antd';
-import Prismjs from '../prismjs/prism';
 import moment from 'moment';
 
 import { RootState } from '../reducers';
@@ -45,10 +44,6 @@ const PostCard = ({ post }: PostProps) => {
             type: UNBOOKMARK_POST_REQUEST,
             data: uuid,
         });
-    }, []);
-
-    useEffect(() => {
-        Prismjs.highlightAll();
     }, []);
 
     return (
