@@ -1,7 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 import wrapper, { IStore } from '../../store/makeStore';
@@ -14,10 +13,6 @@ import { END } from 'redux-saga';
 const CategoryPostCard = dynamic(() => import('../../containers/CategoryPostCard'), { loading: () => <p>로딩중...</p> });
 
 const Id = () => {
-    const router = useRouter();
-    const { id } = router.query;
-
-    const dispatch = useDispatch();
     const { singlePost } = useSelector((state: RootState) => state.post);
 
     return (

@@ -1,20 +1,19 @@
 import React, { useCallback } from 'react';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '../reducers';
-import { StyledTable, StyledButton } from '../style/pages/categoryid';
+import { StyledTable, StyledButton, StyledH1 } from '../style/pages/categoryid';
 
-interface Props {
-  name: string | string[],
-};
+const CategoryListContent = () => {
+    const Router = useRouter();
 
-const CategoryListContent = ({ name }: Props) => {
     const { postList } = useSelector((state: RootState) => state.postlist);
     const admin = useSelector((state: RootState) => state.user.me?.admin);
 
     const currentPage = Router.query.page ? Number(Router.query.page) : 1;
+    const name = Router.query.category;
     
     const columns: { title: string, dataIndex: string, key: string, render?: (text: string) => JSX.Element }[] = [{
         title: '제목',
@@ -52,6 +51,7 @@ const CategoryListContent = ({ name }: Props) => {
 
     return (
         <main>
+            <StyledH1>{Router.query.category}</StyledH1>
             <StyledTable columns={columns} dataSource={postList} pagination={paginationOptions} />
             {admin && 
                 (
