@@ -157,103 +157,105 @@ type PostAction =
     | RemovePostRequestAction | RemovePostSuccessAction | RemovePostFailureAction
     | EditPostRequestAction | EditPostSuccessAction | EditPostFailureAction;
 
-export default (state = initialState, action: PostAction): PostState => {
-    return produce(state, (draft) => {
-        switch (action.type) {
-            case ADD_COMMENT_REQUEST: {
-                draft.isAddingComment = true;
-                draft.isAddedComment = false;
-                break;
-            }
-            case ADD_COMMENT_SUCCESS: {
-                draft.singlePost.Comments.push(action.data);
-                draft.isAddingComment = false;
-                draft.isAddedComment = true;
-                break;
-            }
-            case ADD_COMMENT_FAILURE: {
-                draft.isAddingComment = false;
-                draft.isAddedComment = false;
-                break;
-            }
-            case ADD_POST_REQUEST: {
-                draft.isAddedPost = false;
-                break;
-            }
-            case ADD_POST_SUCCESS: {
-                draft.mainPosts.unshift(action.data);
-                draft.isAddedPost = true;
-                break;
-            }
-            case ADD_POST_FAILURE: {
-                draft.isAddedPost = false;
-                break;
-            }
-            case GET_POSTS_REQUEST: {
-                draft.mainPosts = [];
-                break;
-            }
-            case GET_POSTS_SUCCESS: {
-                action.data.forEach((p) => {
-                    draft.mainPosts.push(p);
-                })
-                break;
-            }
-            case GET_POSTS_FAILURE: {
-                break;
-            }
-            case GET_POST_REQUEST: {
-                if (action.editing) {
-                    draft.editingSinglePost = null;
-                    break;
-                }
-                else {
-                    draft.singlePost = null;
-                    break;
-                }
-            }
-            case GET_POST_SUCCESS: {
-                if (action.editing) {  //수정중일 때 editorState 객체 상태
-                    draft.editingSinglePost = action.data;
-                    break;
-                }
-                else {  //글을 볼 때 html 상태
-                    draft.singlePost = action.data;
-                    break;
-                }
-            }
-            case GET_POST_FAILURE: {
-                break;
-            }
-            case REMOVE_POST_REQUEST: {
-                draft.isRemovedPost = false;
-                break;
-            }
-            case REMOVE_POST_SUCCESS: {
-                const index = draft.mainPosts.findIndex(p => p.uuid === action.data);
-                draft.mainPosts.splice(index, 1);
-                draft.isRemovedPost = true;
-                break;
-            }
-            case REMOVE_POST_FAILURE: {
-                draft.isRemovedPost = false;
-                break;
-            }
-            case EDIT_POST_REQUEST: {
-                draft.isEditedPost = false;
-                break;
-            }
-            case EDIT_POST_SUCCESS: {
-                draft.isEditedPost = true;
-                break;
-            }
-            case EDIT_POST_FAILURE: {
-                draft.isEditedPost = false;
-                break;
-            }
-            default: {
-                break;
-            }
-        }
-    });
-}
+const postReducer = (state = initialState, action: PostAction): PostState => {
+  return produce(state, (draft) => {
+      switch (action.type) {
+          case ADD_COMMENT_REQUEST: {
+              draft.isAddingComment = true;
+              draft.isAddedComment = false;
+              break;
+          }
+          case ADD_COMMENT_SUCCESS: {
+              draft.singlePost.Comments.push(action.data);
+              draft.isAddingComment = false;
+              draft.isAddedComment = true;
+              break;
+          }
+          case ADD_COMMENT_FAILURE: {
+              draft.isAddingComment = false;
+              draft.isAddedComment = false;
+              break;
+          }
+          case ADD_POST_REQUEST: {
+              draft.isAddedPost = false;
+              break;
+          }
+          case ADD_POST_SUCCESS: {
+              draft.mainPosts.unshift(action.data);
+              draft.isAddedPost = true;
+              break;
+          }
+          case ADD_POST_FAILURE: {
+              draft.isAddedPost = false;
+              break;
+          }
+          case GET_POSTS_REQUEST: {
+              draft.mainPosts = [];
+              break;
+          }
+          case GET_POSTS_SUCCESS: {
+              action.data.forEach((p) => {
+                  draft.mainPosts.push(p);
+              })
+              break;
+          }
+          case GET_POSTS_FAILURE: {
+              break;
+          }
+          case GET_POST_REQUEST: {
+              if (action.editing) {
+                  draft.editingSinglePost = null;
+                  break;
+              }
+              else {
+                  draft.singlePost = null;
+                  break;
+              }
+          }
+          case GET_POST_SUCCESS: {
+              if (action.editing) {  //수정중일 때 editorState 객체 상태
+                  draft.editingSinglePost = action.data;
+                  break;
+              }
+              else {  //글을 볼 때 html 상태
+                  draft.singlePost = action.data;
+                  break;
+              }
+          }
+          case GET_POST_FAILURE: {
+              break;
+          }
+          case REMOVE_POST_REQUEST: {
+              draft.isRemovedPost = false;
+              break;
+          }
+          case REMOVE_POST_SUCCESS: {
+              const index = draft.mainPosts.findIndex(p => p.uuid === action.data);
+              draft.mainPosts.splice(index, 1);
+              draft.isRemovedPost = true;
+              break;
+          }
+          case REMOVE_POST_FAILURE: {
+              draft.isRemovedPost = false;
+              break;
+          }
+          case EDIT_POST_REQUEST: {
+              draft.isEditedPost = false;
+              break;
+          }
+          case EDIT_POST_SUCCESS: {
+              draft.isEditedPost = true;
+              break;
+          }
+          case EDIT_POST_FAILURE: {
+              draft.isEditedPost = false;
+              break;
+          }
+          default: {
+              break;
+          }
+      }
+  });
+};
+
+export default postReducer;

@@ -179,107 +179,109 @@ type CategoryAction =
     | EditScategoryRequestAction | EditScategorySuccessAction | EditScategoryFailureAction
     | RemoveScategoryRequestAction | RemoveScategorySuccessAction | RemoveScategoryFailureAction;
 
-export default (state = initialState, action: CategoryAction): CategoryState => {
-    return produce(state, (draft) => {
-        switch (action.type) {
-            case GET_BCATEGORY_REQUEST: {
-                draft.bcategory = [];
-                break;
-            }
-            case GET_BCATEGORY_SUCCESS: {
-                action.data.forEach((category) => {
-                    draft.bcategory.push(category);
-                });
-                break;
-            }
-            case GET_BCATEGORY_FAILURE: {
-                break;
-            }
-            case ADD_BCATEGORY_REQUEST: {
-                draft.isAddingBcategory = true;
-                break;
-            }
-            case ADD_BCATEGORY_SUCCESS: {
-                draft.bcategory.push(action.data);
-                draft.isAddingBcategory = false;
-                break;
-            }
-            case ADD_BCATEGORY_FAILURE: {
-                draft.isAddingBcategory = false;
-                break;
-            }
-            case ADD_SCATEGORY_REQUEST: {
-                break;
-            }
-            case ADD_SCATEGORY_SUCCESS: {
-                const index = draft.bcategory.findIndex(v => v.name === action.Bcategory);
-                draft.bcategory[index]?.Scategories.push(action.data);
-                break;
-            }
-            case ADD_SCATEGORY_FAILURE: {
-                break;
-            }
-            case GET_SCATEGORYLIST_REQUEST: {
-                draft.scategoryList = [];
-                break;
-            }
-            case GET_SCATEGORYLIST_SUCCESS: {
-                action.data.forEach(c => {
-                    draft.scategoryList.push(c);
-                });
-                break;
-            }
-            case GET_SCATEGORYLIST_FAILURE: {
-                break;
-            }
-            case CHANGE_BCATEGORY_ORDER_REQUEST: {
-                break;
-            }
-            case CHANGE_BCATEGORY_ORDER_SUCCESS: {
-                break;
-            }
-            case CHANGE_BCATEGORY_ORDER_FAILURE: {
-                break;
-            }
-            case EDIT_BCATEGORY_REQUEST: {
-                break;
-            }
-            case EDIT_BCATEGORY_SUCCESS: {
-                break;
-            }
-            case EDIT_BCATEGORY_FAILURE: {
-                break;
-            }
-            case REMOVE_BCATEGORY_REQUEST: {
-                break;
-            }
-            case REMOVE_BCATEGORY_SUCCESS: {
-                break;
-            }
-            case REMOVE_BCATEGORY_FAILURE: {
-                break;
-            }
-            case EDIT_SCATEGORY_REQUEST: {
-                break;
-            }
-            case EDIT_SCATEGORY_SUCCESS: {
-                break;
-            }
-            case EDIT_SCATEGORY_FAILURE: {
-                break;
-            }
-            case REMOVE_SCATEGORY_REQUEST: {
-                break;
-            }
-            case REMOVE_SCATEGORY_SUCCESS: {
-                break;
-            }
-            case REMOVE_SCATEGORY_FAILURE: {
-                break;
-            }
-            default: {
-                break;
-            }
-        }
-    });
-}
+const categoryReducer = (state = initialState, action: CategoryAction): CategoryState => {
+  return produce(state, (draft) => {
+      switch (action.type) {
+          case GET_BCATEGORY_REQUEST: {
+              draft.bcategory = [];
+              break;
+          }
+          case GET_BCATEGORY_SUCCESS: {
+              action.data.forEach((category) => {
+                  draft.bcategory.push(category);
+              });
+              break;
+          }
+          case GET_BCATEGORY_FAILURE: {
+              break;
+          }
+          case ADD_BCATEGORY_REQUEST: {
+              draft.isAddingBcategory = true;
+              break;
+          }
+          case ADD_BCATEGORY_SUCCESS: {
+              draft.bcategory.push(action.data);
+              draft.isAddingBcategory = false;
+              break;
+          }
+          case ADD_BCATEGORY_FAILURE: {
+              draft.isAddingBcategory = false;
+              break;
+          }
+          case ADD_SCATEGORY_REQUEST: {
+              break;
+          }
+          case ADD_SCATEGORY_SUCCESS: {
+              const index = draft.bcategory.findIndex(v => v.name === action.Bcategory);
+              draft.bcategory[index]?.Scategories.push(action.data);
+              break;
+          }
+          case ADD_SCATEGORY_FAILURE: {
+              break;
+          }
+          case GET_SCATEGORYLIST_REQUEST: {
+              draft.scategoryList = [];
+              break;
+          }
+          case GET_SCATEGORYLIST_SUCCESS: {
+              action.data.forEach(c => {
+                  draft.scategoryList.push(c);
+              });
+              break;
+          }
+          case GET_SCATEGORYLIST_FAILURE: {
+              break;
+          }
+          case CHANGE_BCATEGORY_ORDER_REQUEST: {
+              break;
+          }
+          case CHANGE_BCATEGORY_ORDER_SUCCESS: {
+              break;
+          }
+          case CHANGE_BCATEGORY_ORDER_FAILURE: {
+              break;
+          }
+          case EDIT_BCATEGORY_REQUEST: {
+              break;
+          }
+          case EDIT_BCATEGORY_SUCCESS: {
+              break;
+          }
+          case EDIT_BCATEGORY_FAILURE: {
+              break;
+          }
+          case REMOVE_BCATEGORY_REQUEST: {
+              break;
+          }
+          case REMOVE_BCATEGORY_SUCCESS: {
+              break;
+          }
+          case REMOVE_BCATEGORY_FAILURE: {
+              break;
+          }
+          case EDIT_SCATEGORY_REQUEST: {
+              break;
+          }
+          case EDIT_SCATEGORY_SUCCESS: {
+              break;
+          }
+          case EDIT_SCATEGORY_FAILURE: {
+              break;
+          }
+          case REMOVE_SCATEGORY_REQUEST: {
+              break;
+          }
+          case REMOVE_SCATEGORY_SUCCESS: {
+              break;
+          }
+          case REMOVE_SCATEGORY_FAILURE: {
+              break;
+          }
+          default: {
+              break;
+          }
+      }
+  });
+};
+
+export default categoryReducer;

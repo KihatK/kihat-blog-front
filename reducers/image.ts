@@ -30,23 +30,25 @@ interface UploadImageFailureAction {
 type ImageAction = 
     | UploadImageRequestAction | UploadImageSuccessAction | UploadImageFailureAction;
 
-export default (state = initialState, action: ImageAction): ImageState => {
-    return produce(state, (draft) => {
-        switch (action.type) {
-            case UPLOAD_IMAGE_REQUEST: {
-                draft.imageUrl = '';
-                break;
-            }
-            case UPLOAD_IMAGE_SUCCESS: {
-                draft.imageUrl = action.data;
-                break;
-            }
-            case UPLOAD_IMAGE_FAILURE: {
-                break;
-            }
-            default: {
-                break;
-            }
-        }
-    });
-}
+const imageReducer = (state = initialState, action: ImageAction): ImageState => {
+  return produce(state, (draft) => {
+      switch (action.type) {
+          case UPLOAD_IMAGE_REQUEST: {
+              draft.imageUrl = '';
+              break;
+          }
+          case UPLOAD_IMAGE_SUCCESS: {
+              draft.imageUrl = action.data;
+              break;
+          }
+          case UPLOAD_IMAGE_FAILURE: {
+              break;
+          }
+          default: {
+              break;
+          }
+      }
+  });
+};
+
+export default imageReducer;

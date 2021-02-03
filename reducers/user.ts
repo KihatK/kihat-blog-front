@@ -131,97 +131,99 @@ type UserAction =
     | BookmarkPostRequestAction | BookmarkPostSuccessAction | BookmarkPostFailureAction
     | UnbookmarkPostRequestAction | UnbookmarkPostSuccessAction | UnbookmarkPostFailureAction;
 
-export default (state = initialState, action: UserAction): UserState => {
-    return produce(state, (draft) => {
-        switch (action.type) {
-            case SIGN_UP_REQUEST: {
-                draft.isSigningUp = true;
-                draft.isSignedUp = false;
-                draft.isSigningupError = '';
-                break;
-            }
-            case SIGN_UP_SUCCESS: {
-                draft.isSigningUp = false;
-                draft.isSignedUp = true;
-                break;
-            }
-            case SIGN_UP_FAILURE: {
-                draft.isSigningUp = false;
-                draft.isSignedUp = false;
-                draft.isSigningupError = action.error;
-                break;
-            }
-            case LOG_IN_REQUEST: {
-                draft.isLoggingIn = true;
-                draft.isLoggedIn = false;
-                draft.isLoggingInError = '';
-                break;
-            }
-            case LOG_IN_SUCCESS: {
-                draft.isLoggingIn = false;
-                draft.me = action.data;
-                draft.isLoggedIn = true;
-                break;
-            }
-            case LOG_IN_FAILURE: {
-                draft.isLoggingIn = false;
-                draft.isLoggedIn = false;
-                draft.isLoggingInError = action.error;
-                break;
-            }
-            case LOG_OUT_REQUEST: {
-                break;
-            }
-            case LOG_OUT_SUCCESS: {
-                draft.me = null;
-                draft.isLoggedIn = false;
-                break;
-            }
-            case LOG_OUT_FAILURE: {
-                break;
-            }
-            case LOAD_USER_REQUEST: {
-                break;
-            }
-            case LOAD_USER_SUCCESS: {
-                action.data.BookMarked.forEach((p) => {
-                    p.createdAt = moment(p.createdAt).tz('Asia/Seoul').format('YYYY-MM-DD HH:mm');
-                    p.key = p.id.toString();
-                    p.titles = [p.title, p.uuid];
-                });
-                draft.me = action.data;
-                break;
-            }
-            case LOAD_USER_FAILURE: {
-                break;
-            }
-            case BOOKMARK_POST_REQUEST: {
-                break;
-            }
-            case BOOKMARK_POST_SUCCESS: {
-                action.data.createdAt = moment(action.data.createdAt).format('YYYY-MM-DD HH:mm');
-                action.data.key = action.data.id.toString();
-                action.data.titles = [action.data.title, action.data.uuid];
-                draft.me?.BookMarked.unshift(action.data);
-                break;
-            }
-            case BOOKMARK_POST_FAILURE: {
-                break;
-            }
-            case UNBOOKMARK_POST_REQUEST: {
-                break;
-            }
-            case UNBOOKMARK_POST_SUCCESS: {
-                const index = draft.me?.BookMarked.findIndex(p => p.uuid === action.data.uuid) || 0;
-                draft.me?.BookMarked.splice(index, 1);
-                break;
-            }
-            case UNBOOKMARK_POST_FAILURE: {
-                break;
-            }
-            default: {
-                break;
-            }
-        }
-    });
-}
+const userReducer = (state = initialState, action: UserAction): UserState => {
+  return produce(state, (draft) => {
+      switch (action.type) {
+          case SIGN_UP_REQUEST: {
+              draft.isSigningUp = true;
+              draft.isSignedUp = false;
+              draft.isSigningupError = '';
+              break;
+          }
+          case SIGN_UP_SUCCESS: {
+              draft.isSigningUp = false;
+              draft.isSignedUp = true;
+              break;
+          }
+          case SIGN_UP_FAILURE: {
+              draft.isSigningUp = false;
+              draft.isSignedUp = false;
+              draft.isSigningupError = action.error;
+              break;
+          }
+          case LOG_IN_REQUEST: {
+              draft.isLoggingIn = true;
+              draft.isLoggedIn = false;
+              draft.isLoggingInError = '';
+              break;
+          }
+          case LOG_IN_SUCCESS: {
+              draft.isLoggingIn = false;
+              draft.me = action.data;
+              draft.isLoggedIn = true;
+              break;
+          }
+          case LOG_IN_FAILURE: {
+              draft.isLoggingIn = false;
+              draft.isLoggedIn = false;
+              draft.isLoggingInError = action.error;
+              break;
+          }
+          case LOG_OUT_REQUEST: {
+              break;
+          }
+          case LOG_OUT_SUCCESS: {
+              draft.me = null;
+              draft.isLoggedIn = false;
+              break;
+          }
+          case LOG_OUT_FAILURE: {
+              break;
+          }
+          case LOAD_USER_REQUEST: {
+              break;
+          }
+          case LOAD_USER_SUCCESS: {
+              action.data.BookMarked.forEach((p) => {
+                  p.createdAt = moment(p.createdAt).tz('Asia/Seoul').format('YYYY-MM-DD HH:mm');
+                  p.key = p.id.toString();
+                  p.titles = [p.title, p.uuid];
+              });
+              draft.me = action.data;
+              break;
+          }
+          case LOAD_USER_FAILURE: {
+              break;
+          }
+          case BOOKMARK_POST_REQUEST: {
+              break;
+          }
+          case BOOKMARK_POST_SUCCESS: {
+              action.data.createdAt = moment(action.data.createdAt).format('YYYY-MM-DD HH:mm');
+              action.data.key = action.data.id.toString();
+              action.data.titles = [action.data.title, action.data.uuid];
+              draft.me?.BookMarked.unshift(action.data);
+              break;
+          }
+          case BOOKMARK_POST_FAILURE: {
+              break;
+          }
+          case UNBOOKMARK_POST_REQUEST: {
+              break;
+          }
+          case UNBOOKMARK_POST_SUCCESS: {
+              const index = draft.me?.BookMarked.findIndex(p => p.uuid === action.data.uuid) || 0;
+              draft.me?.BookMarked.splice(index, 1);
+              break;
+          }
+          case UNBOOKMARK_POST_FAILURE: {
+              break;
+          }
+          default: {
+              break;
+          }
+      }
+  });
+};
+
+export default userReducer;

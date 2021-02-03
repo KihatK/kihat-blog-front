@@ -33,28 +33,30 @@ interface GetCategoryPostsFailureAction {
 type PostListAction = 
     | GetCategoryPostsRequestAction | GetCategoryPostsSuccessAction | GetCategoryPostsFailureAction;
 
-export default (state = initialState, action: PostListAction): PostListState => {
-    return produce(state, (draft) => {
-        switch (action.type) {
-            case GET_CATEGORY_POSTS_REQUEST: {
-                draft.postList = [];
-                break;
-            }
-            case GET_CATEGORY_POSTS_SUCCESS: {
-                action.data.forEach((p) => {
-                    p.createdAt = moment(p.createdAt).tz('Asia/Seoul').format('YYYY-MM-DD HH:mm');
-                    p.key = p.id.toString();
-                    p.titles = [p.title, p.uuid];
-                    draft.postList.push(p);
-                });
-                break;
-            }
-            case GET_CATEGORY_POSTS_FAILURE: {
-                break;
-            }
-            default: {
-                break;
-            }
-        }
-    });
-}
+const postlistReducer = (state = initialState, action: PostListAction): PostListState => {
+  return produce(state, (draft) => {
+      switch (action.type) {
+          case GET_CATEGORY_POSTS_REQUEST: {
+              draft.postList = [];
+              break;
+          }
+          case GET_CATEGORY_POSTS_SUCCESS: {
+              action.data.forEach((p) => {
+                  p.createdAt = moment(p.createdAt).tz('Asia/Seoul').format('YYYY-MM-DD HH:mm');
+                  p.key = p.id.toString();
+                  p.titles = [p.title, p.uuid];
+                  draft.postList.push(p);
+              });
+              break;
+          }
+          case GET_CATEGORY_POSTS_FAILURE: {
+              break;
+          }
+          default: {
+              break;
+          }
+      }
+  });
+};
+
+export default postlistReducer;
