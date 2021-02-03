@@ -53,7 +53,7 @@ const CategoryList = ({ category }: CategoryListProps) => {
                     {bcategory[bcategoryIndex]?.Scategories?.map((c: { name: string }) => 
                         <div key={c.name}>
                             &nbsp;&nbsp;
-                            <Link href="/category/[category]" as={`/category/${c.name.replace(/\s/gi, "")}`}>
+                            <Link href="/category/[category]" as={`/category/${c.name.replace(/\s/gi, "")}`} prefetch>
                                 <a>{c.name}</a>
                             </Link>
                             <br/>
