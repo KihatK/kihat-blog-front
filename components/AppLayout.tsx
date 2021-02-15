@@ -3,8 +3,9 @@ import React, { useState, useCallback } from 'react';
 import HeaderLayout from './HeaderLayout';
 import MainLayout from './MainLayout';
 import CategoryDrawer from '../containers/CategoryDrawer';
+import FooterLayout from './FooterLayout';
 import {
-    StyledImg, MenuUnderlined, DraftEditorStyled, StyledDiv, ImageWidth
+    StyledImg, MenuUnderlined, DraftEditorStyled, ImageWidth
 } from '../style/components/AppLayout';
 
 interface Props {
@@ -30,12 +31,7 @@ const AppLayout = ({ children }: Props) => {
             <StyledImg src="https://kihat-blog.s3.amazonaws.com/original/laptop-1209008.jpg" alt="main-page-image"/>
             <MainLayout children={children}/>
             <CategoryDrawer visible={visible} onClose={onClose}/>
-            <StyledDiv>
-                <br/>
-                    Made by Kihat
-                <br/>
-                &nbsp;
-            </StyledDiv>
+            <FooterLayout/>
         </>
     );
 }
