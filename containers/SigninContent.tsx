@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input, Button } from 'antd';
 
+import Username from './SignIn/Username';
+import Password from './SignIn/Password';
 import { RootState } from '../reducers';
 import { LOG_IN_REQUEST } from '../reducers/user';
 import { StyledCard, StyledA, StyledDiv } from '../style/pages/signin';
@@ -42,24 +44,12 @@ const SigninContent = () => {
             <h1>로그인하기</h1>
             <br />
             <Form onFinish={finishLogin}>
-                <Form.Item
-                    label="Username"
-                    name="username"
-                    rules={[{ required: true, message: '아이디를 입력하셔야 합니다!' }]}
-                >
-                    <Input value={id} onChange={changeId} autoComplete="username"/>
-                </Form.Item>
-                <Form.Item
-                    label="Password"
-                    name="password"
-                    rules={[{ required: true, message: '비밀번호를 입력하셔야 합니다!' }]}
-                >
-                    <Input.Password value={password} onChange={changePassword} autoComplete="current-password"/>
-                </Form.Item>
+                <Username id={id} changeId={changeId} />
+                <Password password={password} changePassword={changePassword} />
                 <Form.Item>
                     <Button type="primary" htmlType="submit" loading={isLoggingIn}>
                         로그인
-                                </Button>
+                    </Button>
                     <Link href="/signup">
                         <StyledA>회원가입하기</StyledA>
                     </Link>
