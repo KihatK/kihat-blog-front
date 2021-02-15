@@ -1,13 +1,10 @@
 import React, { useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import { Col } from 'antd';
 
 import HeaderLayout from './HeaderLayout';
+import MainLayout from './MainLayout';
 import CategoryDrawer from '../containers/CategoryDrawer';
-import { RootState } from '../reducers';
 import {
-    StyledImg, StyledRow, MainContentCol,
-    MenuUnderlined, DraftEditorStyled, StyledDiv, ImageWidth
+    StyledImg, MenuUnderlined, DraftEditorStyled, StyledDiv, ImageWidth
 } from '../style/components/AppLayout';
 
 interface Props {
@@ -31,22 +28,12 @@ const AppLayout = ({ children }: Props) => {
             <DraftEditorStyled/>
             <HeaderLayout showDrawer={showDrawer} />
             <StyledImg src="https://kihat-blog.s3.amazonaws.com/original/laptop-1209008.jpg" alt="main-page-image"/>
-            <StyledRow>
-                <Col xs={24} md={2}>
-                    
-                </Col>
-                <MainContentCol xs={24} md={20}>
-                    {children}
-                </MainContentCol>
-                <Col xs={24} md={2}>
-
-                </Col>
-            </StyledRow>
+            <MainLayout children={children}/>
             <CategoryDrawer visible={visible} onClose={onClose}/>
             <StyledDiv>
-                <br />
+                <br/>
                     Made by Kihat
-                <br />
+                <br/>
                 &nbsp;
             </StyledDiv>
         </>
