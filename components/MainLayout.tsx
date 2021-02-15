@@ -4,6 +4,8 @@ import { Col } from 'antd';
 import { StyledRow, MainContentCol } from '../style/components/AppLayout';
 
 const MainLayout = ({ children }) => {
+  console.log('MainLayout rendered');
+
   return (
     <>
       <main>

@@ -12,6 +12,8 @@ import {
 const HeaderLayout = ({ showDrawer }) => {
   const me = useSelector((state: RootState) => state.user.me);
 
+  console.log('HeaderLayout rendered');
+
   return (
     <>
       <header>
