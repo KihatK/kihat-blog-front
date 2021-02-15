@@ -2,6 +2,8 @@ import React, { memo } from 'react';
 import { Form, Input } from 'antd';
 
 const Password = ({ password, changePassword }) => {
+  console.log('Password rendered')
+
   return (
     <Form.Item
       label="Password"
