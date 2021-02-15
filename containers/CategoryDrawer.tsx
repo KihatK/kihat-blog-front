@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
@@ -55,4 +55,4 @@ const CategoryDrawer = ({ visible, onClose }: CategoryDrawerProps) => {
     );
 };
 
-export default CategoryDrawer;
+export default memo(CategoryDrawer);
