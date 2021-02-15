@@ -2,8 +2,6 @@ import React, { memo } from 'react';
 import { Form, Input } from 'antd';
 
 const Username = ({ id, changeId }) => {
-  console.log('Username rendered');
-
   return (
     <Form.Item
       label="Username"

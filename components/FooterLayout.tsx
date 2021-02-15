@@ -3,8 +3,6 @@ import React, { memo } from 'react';
 import { StyledDiv } from '../style/components/AppLayout';
 
 const FooterLayout = () => {
-  console.log('FooterLayout rendered');
-
   return (
     <>
       <footer>

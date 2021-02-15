@@ -13,8 +13,6 @@ import { CategoryDrawerProps } from '../util/props';
 const CategoryList = dynamic(() => import('./CategoryList'), { loading: () => <p>로딩중...</p>, ssr: false });
 
 const CategoryDrawer = ({ visible, onClose }: CategoryDrawerProps) => {
-    console.log('CategoryDrawer rendered');
-
     const dispatch = useDispatch();
     const { bcategory, isAddingBcategory } = useSelector((state: RootState) => state.category);
     const admin = useSelector((state: RootState) => state.user.me?.admin);
