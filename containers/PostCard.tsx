@@ -17,13 +17,8 @@ const PostCard = ({ post }: PostProps) => {
     const [toggleComment, setToggleComment] = useState(false);
 
     const clickToggleComment = useCallback(() => {
-        if (toggleComment) {
-            setToggleComment(false);
-        }
-        else {
-            setToggleComment(true);
-        }
-    }, [toggleComment]);
+        setToggleComment(toggleComment => !toggleComment);
+    }, []);
 
     return (
       <>
