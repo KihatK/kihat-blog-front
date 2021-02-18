@@ -4,8 +4,9 @@ import Router from 'next/router';
 import { useSelector } from 'react-redux';
 import { Select } from 'antd';
 
+import NewPostCategory from './NewPost/NewPostCategory';
+import NewPostTitle from './NewPost/NewPostTitle';
 import { RootState } from '../reducers';
-import { StyledInput } from '../style/pages/newpost';
 
 const Editor = dynamic(() => import('../containers/Editor'));
 
@@ -51,17 +52,8 @@ const NewPostContent = () => {
 
     return (
         <main>
-            <StyledInput placeholder="제목을 입력하세요" value={title} onChange={changeTitle} />
-            <Select
-                style={{ display: 'block' }}
-                labelInValue
-                defaultValue={{ key: category }}
-                onChange={changeCategory}
-            >
-                {scategoryList.map((c: { name: string }) => (
-                    <Select.Option key={c.name} value={c.name}>{c.name}</Select.Option>
-                ))}
-            </Select>
+            <NewPostTitle title={title} changeTitle={changeTitle} />
+            <NewPostCategory category={category} changeCategory={changeCategory} />
             <Select
                 style={{ display: 'block' }}
                 labelInValue
