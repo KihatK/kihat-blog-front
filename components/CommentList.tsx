@@ -4,6 +4,8 @@ import moment from 'moment';
 
 import { PostProps } from '../util/props';
 
+moment.locale('ko');
+
 const CommentList = ({ post }: PostProps) => {
     return (
         <List
