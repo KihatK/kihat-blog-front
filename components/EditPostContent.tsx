@@ -4,6 +4,7 @@ import Router from 'next/router';
 import { useSelector } from 'react-redux';
 import { Select } from 'antd';
 
+import EditPostTitle from './EditPost/EditPostTitle';
 import { RootState } from '../reducers';
 import { StyledInput } from '../style/pages/editid';
 
@@ -44,8 +45,9 @@ const EditPostContent = () => {
     }, [isEditedPost]);
 
     return (
+      <>
         <main>
-            <StyledInput placeholder="제목을 입력하세요" value={title} onChange={changeTitle} />
+            <EditPostTitle title={title} changeTitle={changeTitle} />
             <Select
                 style={{ display: 'block' }}
                 labelInValue
@@ -60,6 +62,7 @@ const EditPostContent = () => {
               editing={editingSinglePost?.content} uuid={editingSinglePost?.uuid}
             />
         </main>
+      </>
     );
 }
 

@@ -45,6 +45,7 @@ const NewPostContent = () => {
     }, [isAddedPost]);
 
     return (
+      <>
         <main>
             <NewPostTitle title={title} changeTitle={changeTitle} />
             <Select
@@ -59,6 +60,7 @@ const NewPostContent = () => {
             </Select>
             <Editor nickname={nickname} title={title} category={category} />
         </main>
+      </>
     );
 }
 
