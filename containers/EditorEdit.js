@@ -5,7 +5,7 @@ import SunEditor from 'suneditor-react';
 import { EDIT_POST_REQUEST } from '../reducers/post';
 import { StyledButton } from '../style/containers/DraftEditor';
 
-const EditorEdit = ({ nickname, title, category, language, editing, uuid }) => {
+const EditorEdit = ({ nickname, title, category, editing, uuid }) => {
   const dispatch = useDispatch();
 
   const [contents, setContents] = useState(editing);
@@ -18,11 +18,10 @@ const EditorEdit = ({ nickname, title, category, language, editing, uuid }) => {
         nickname,
         content: contents,
         scategory: category,
-        language,
         uuid,
       },
     });
-}, [contents, title, nickname, category, language, uuid]);
+}, [contents, title, nickname, category, uuid]);
 
   return (
     <>

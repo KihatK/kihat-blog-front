@@ -16,8 +16,7 @@ const NewPostContent = () => {
     const { isAddedPost } = useSelector((state: RootState) => state.post);
 
     const [title, setTitle] = useState('');
-    const [category, setCategory] = useState('카테고리를 선택해주세요.');
-    const [language, setLanguage] = useState('none');
+    const [category, setCategory] = useState(scategoryList[0]?.name);
     const countRef = useRef(false);
 
     const changeTitle = useCallback((e) => {
@@ -26,10 +25,6 @@ const NewPostContent = () => {
 
     const changeCategory = useCallback(value => {
         setCategory(value.key);
-    }, []);
-
-    const changeLanguage = useCallback(value => {
-        setLanguage(value.key);
     }, []);
 
     useEffect(() => {
@@ -55,24 +50,14 @@ const NewPostContent = () => {
             <Select
                 style={{ display: 'block' }}
                 labelInValue
-                defaultValue='카테고리를 선택해주세요.'
+                defaultValue={{ key: category }}
                 onChange={changeCategory}
             >
                 {scategoryList.map((c: { name: string }) => (
                     <Select.Option key={c.name} value={c.name}>{c.name}</Select.Option>
                 ))}
             </Select>
-            <Select
-                style={{ display: 'block' }}
-                labelInValue
-                defaultValue={{ key: language }}
-                onChange={changeLanguage}
-            >
-                <Select.Option value="javascript">JavaScript</Select.Option>
-                <Select.Option value="cpp">C++</Select.Option>
-                <Select.Option value="none">None</Select.Option>
-            </Select>
-            <Editor nickname={nickname} title={title} category={category} language={language} />
+            <Editor nickname={nickname} title={title} category={category} />
         </main>
     );
 }

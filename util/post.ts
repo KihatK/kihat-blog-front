@@ -32,7 +32,6 @@ export interface AddPostData {
     nickname: string,
     content: string,
     scategory: string,
-    language: string,
 };
 
 export interface EditPostData extends AddPostData {

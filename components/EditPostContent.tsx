@@ -17,7 +17,6 @@ const EditPostContent = () => {
 
     const [title, setTitle] = useState(editingSinglePost?.title);
     const [category, setCategory] = useState(editingSinglePost?.scategory);
-    const [language, setLanguage] = useState(editingSinglePost.language);
     const countRef = useRef(false);
 
     const changeTitle = useCallback((e) => {
@@ -25,9 +24,6 @@ const EditPostContent = () => {
     }, []);
     const changeCategory = useCallback(value => {
         setCategory(value.key);
-    }, []);
-    const changeLanguage = useCallback(value => {
-        setLanguage(value.key);
     }, []);
 
     useEffect(() => {
@@ -60,18 +56,8 @@ const EditPostContent = () => {
                     <Select.Option key={c.name} value={c.name}>{c.name}</Select.Option>
                 ))}
             </Select>
-            <Select
-                style={{ display: 'block' }}
-                labelInValue
-                defaultValue={{ key: language }}
-                onChange={changeLanguage}
-            >
-                <Select.Option value="javascript">JavaScript</Select.Option>
-                <Select.Option value="cpp">C++</Select.Option>
-                <Select.Option value="none">None</Select.Option>
-            </Select>
             <EditorEdit nickname={nickname} title={title} category={category}
-                language={language} editing={editingSinglePost?.content} uuid={editingSinglePost?.uuid}
+              editing={editingSinglePost?.content} uuid={editingSinglePost?.uuid}
             />
         </main>
     );
