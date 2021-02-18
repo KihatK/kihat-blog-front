@@ -4,7 +4,6 @@ import Router from 'next/router';
 import { useSelector } from 'react-redux';
 import { Select } from 'antd';
 
-import NewPostCategory from './NewPost/NewPostCategory';
 import NewPostTitle from './NewPost/NewPostTitle';
 import { RootState } from '../reducers';
 
@@ -53,7 +52,16 @@ const NewPostContent = () => {
     return (
         <main>
             <NewPostTitle title={title} changeTitle={changeTitle} />
-            {category && <NewPostCategory category={category} changeCategory={changeCategory} />}
+            <Select
+                style={{ display: 'block' }}
+                labelInValue
+                defaultValue={{ key: category }}
+                onChange={changeCategory}
+            >
+                {scategoryList.map((c: { name: string }) => (
+                    <Select.Option key={c.name} value={c.name}>{c.name}</Select.Option>
+                ))}
+            </Select>
             <Select
                 style={{ display: 'block' }}
                 labelInValue
