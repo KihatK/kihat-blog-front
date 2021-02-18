@@ -53,7 +53,7 @@ const NewPostContent = () => {
     return (
         <main>
             <NewPostTitle title={title} changeTitle={changeTitle} />
-            <NewPostCategory category={category} changeCategory={changeCategory} />
+            {category && <NewPostCategory category={category} changeCategory={changeCategory} />}
             <Select
                 style={{ display: 'block' }}
                 labelInValue
