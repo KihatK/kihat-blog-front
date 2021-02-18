@@ -11,16 +11,21 @@ const Editor = ({ nickname, title, category, language }) => {
   const [contents, setContents] = useState('');
 
   const clickPost = useCallback(() => {
-    dispatch({
-      type: ADD_POST_REQUEST,
-      data: {
-        title,
-        nickname,
-        content: contents,
-        scategory: category,
-        language,
-      },
-    });
+    if (category == '카테고리를 선택해주세요.') {
+      alert('카테고리를 선택해야 글쓰기를 할 수 있습니다.');
+    }
+    else {
+      dispatch({
+        type: ADD_POST_REQUEST,
+        data: {
+          title,
+          nickname,
+          content: contents,
+          scategory: category,
+          language,
+        },
+      });
+    }
   }, [contents, title, nickname, category, language]);
 
   return (

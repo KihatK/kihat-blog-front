@@ -16,7 +16,7 @@ const NewPostContent = () => {
     const { isAddedPost } = useSelector((state: RootState) => state.post);
 
     const [title, setTitle] = useState('');
-    const [category, setCategory] = useState(scategoryList[0]?.name);
+    const [category, setCategory] = useState('카테고리를 선택해주세요.');
     const [language, setLanguage] = useState('none');
     const countRef = useRef(false);
 
