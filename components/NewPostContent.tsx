@@ -55,7 +55,7 @@ const NewPostContent = () => {
             <Select
                 style={{ display: 'block' }}
                 labelInValue
-                defaultValue={{ key: category }}
+                defaultValue={category}
                 onChange={changeCategory}
             >
                 {scategoryList.map((c: { name: string }) => (
