@@ -18,13 +18,8 @@ const CategoryList = ({ category }: CategoryListProps) => {
     const bcategoryIndex = bcategory.findIndex((v: BcategoryType) => v.name === category.name);
 
     const clickCategory = useCallback(() => {
-        if (categoryOpen) {
-            setCategoryOpen(false);
-        }
-        else {
-            setCategoryOpen(true);
-        }
-    }, [categoryOpen]);
+        setCategoryOpen(categoryOpen => !categoryOpen);
+    }, []);
 
     const addCategory = useCallback(() => {
         const newCategory: string | null = prompt('카테고리의 이름을 입력하세요');

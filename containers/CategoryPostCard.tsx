@@ -31,13 +31,8 @@ const CategoryPostCard = ({ post }: PostProps) => {
     const countRef = useRef(false);
 
     const clickToggleComment = useCallback(() => {
-        if (toggleComment) {
-            setToggleComment(false);
-        }
-        else {
-            setToggleComment(true);
-        }
-    }, [toggleComment]);
+        setToggleComment(toggleComment => !toggleComment);
+    }, []);
 
     const removePost = useCallback(uuid => () => {
         if (confirm('정말 삭제하시겠습니까?')) {
