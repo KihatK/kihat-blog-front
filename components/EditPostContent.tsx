@@ -6,7 +6,6 @@ import { Select } from 'antd';
 
 import EditPostTitle from './EditPost/EditPostTitle';
 import { RootState } from '../reducers';
-import { StyledInput } from '../style/pages/editid';
 
 const EditorEdit = dynamic(() => import('../containers/EditorEdit'));
 
