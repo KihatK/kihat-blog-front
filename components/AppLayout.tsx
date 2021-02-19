@@ -15,22 +15,26 @@ interface Props {
 const AppLayout = ({ children }: Props) => {
     const [visible, setVisible] = useState(false);
 
-    const showDrawer = useCallback(() => {
-        setVisible(true);
+    const toggleDrawer = useCallback(() => {
+      setVisible(visible => !visible);
     }, []);
-    const onClose = useCallback(() => {
-        setVisible(false);
-    }, []);
+
+    // const showDrawer = useCallback(() => {
+    //     setVisible(true);
+    // }, []);
+    // const onClose = useCallback(() => {
+    //     setVisible(false);
+    // }, []);
 
     return (
         <>
             <MenuUnderlined/>
             <ImageWidth/>
             <DraftEditorStyled/>
-            <HeaderLayout showDrawer={showDrawer} />
+            <HeaderLayout showDrawer={toggleDrawer} />
             <StyledImg src="https://kihat-blog.s3.amazonaws.com/original/laptop-1209008.jpg" alt="main-page-image"/>
             <MainLayout children={children}/>
-            <CategoryDrawer visible={visible} onClose={onClose}/>
+            <CategoryDrawer visible={visible} onClose={toggleDrawer}/>
             <FooterLayout/>
         </>
     );
