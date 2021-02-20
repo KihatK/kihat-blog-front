@@ -55,7 +55,7 @@ const UserProfile = () => {
         <StyledDiv>
             <Dropdown overlay={menu} trigger={['click']}>
                 <a className="ant-dropdown-link" onClick={clickRotate}>
-                    <StyledSpan>{`${nickname}님 `}<DownOutlined rotate={rotate ? 180 : 0} /></StyledSpan>
+                    <StyledSpan style={{ transition: '0.8s' }}>{`${nickname}님 `}<DownOutlined rotate={rotate ? 180 : 0} /></StyledSpan>
                 </a>
             </Dropdown>
         </StyledDiv>
