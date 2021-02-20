@@ -9,6 +9,7 @@ import { StyledButton } from '../style/containers/CommentForm';
 const CommentForm = ({ uuid }) => {
     const dispatch = useDispatch();
     const { isAddingComment, isAddedComment } = useSelector((state: RootState) => state.post);
+    const me = useSelector((state: RootState) => state.user.me);
 
     const [comment, setComment] = useState('');
     const countRef = useRef(false);
@@ -18,13 +19,18 @@ const CommentForm = ({ uuid }) => {
     }, []);
 
     const finishComment = useCallback(() => {
-        dispatch({
+        if (me) {
+          dispatch({
             type: ADD_COMMENT_REQUEST,
             data: {
                 comment,
                 postId: uuid,
             },
-        });
+          });
+        }
+        else {
+          alert('로그인한 유저만 댓글을 쓰실 수 있습니다.');
+        }
     }, [comment]);
 
     useEffect(() => {
