@@ -2,7 +2,7 @@ import React from 'react';
 
 const setting = () => {
     return (
-        <div>준비중...</div>
+        <h1>준비중...</h1>
     );
 }
 
