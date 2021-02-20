@@ -1,5 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import dynamic from 'next/dynamic';
+import React, { useCallback, useEffect, useRef } from 'react';
 import Router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
@@ -11,28 +10,20 @@ import Avatar from './PostCardContent/Avatar';
 import Nickname from './PostCardContent/Nickname';
 import Time from './PostCardContent/Time';
 import Content from './PostCardContent/Content';
+import Comment from './Comment';
 import { RootState } from '../reducers';
 import { REMOVE_POST_REQUEST } from '../reducers/post';
-import { BOOKMARK_POST_REQUEST, UNBOOKMARK_POST_REQUEST } from '../reducers/user';
-import { DragA, StyledCard, StyledButtonDelete, StyledButtonEdit, StyledCommentDiv } from '../style/containers/PostCard';
+import { StyledCard, StyledButtonDelete, StyledButtonEdit } from '../style/containers/PostCard';
 import { PostProps } from '../util/props';
 
 moment.locale('ko');
-
-const CommentList = dynamic(() => import('../components/CommentList'), { loading: () => <p>로딩중...</p>, ssr: false });
-const CommentForm = dynamic(() => import('./CommentForm'), { loading: () => <p>로딩중...</p>, ssr: false });
 
 const CategoryPostCard = ({ post }: PostProps) => {
     const dispatch = useDispatch();
     const admin = useSelector((state: RootState) => state.user.me?.admin);
     const { isRemovedPost } = useSelector((state: RootState) => state.post);
 
-    const [toggleComment, setToggleComment] = useState(false);
     const countRef = useRef(false);
-
-    const clickToggleComment = useCallback(() => {
-        setToggleComment(toggleComment => !toggleComment);
-    }, []);
 
     const removePost = useCallback(uuid => () => {
         if (confirm('정말 삭제하시겠습니까?')) {
@@ -75,9 +66,7 @@ const CategoryPostCard = ({ post }: PostProps) => {
             bordered={true}
         >
             <Content content={post.content} />
-            <DragA onClick={clickToggleComment}>
-                <u>댓글</u>
-            </DragA>
+            <Comment post={post} admin={admin} />
             {admin
                 && (
                     <>
@@ -85,16 +74,6 @@ const CategoryPostCard = ({ post }: PostProps) => {
                         <StyledButtonEdit onClick={editPost(post.uuid)}>수정</StyledButtonEdit>
                     </>
                 )
-            }
-            {toggleComment 
-                ? <StyledCommentDiv>
-                    <CommentForm post={post}/>
-                    <CommentList post={post}/>
-                    <div>
-                        &nbsp;
-                    </div>
-                </StyledCommentDiv>
-                : null
             }
         </StyledCard>
     );

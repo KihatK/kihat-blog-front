@@ -3,7 +3,7 @@ import React, { memo, useState, useCallback } from 'react';
 import Button from './Button';
 import Toggle from './Toggle';
 
-const Comment = ({ post }) => {
+const Comment = ({ post, admin }) => {
   const [toggleComment, setToggleComment] = useState(false);
 
   const clickToggleComment = useCallback(() => {
@@ -13,7 +13,7 @@ const Comment = ({ post }) => {
   return (
     <>
       <Button clickToggleComment={clickToggleComment} />
-      <Toggle toggleComment={toggleComment} post={post} />
+      <Toggle toggleComment={toggleComment} post={post} admin={admin} />
     </>
   );
 }
