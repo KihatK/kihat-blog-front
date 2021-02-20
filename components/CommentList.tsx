@@ -2,11 +2,11 @@ import React from 'react';
 import { Avatar, Comment, List } from 'antd';
 import moment from 'moment';
 
-import { CommentData } from '../util/post';
+import { CommentListProps } from '../util/props';
 
 moment.locale('ko');
 
-const CommentList = ({ Comments }: { Comments: CommentData[] }) => {
+const CommentList = ({ Comments }: CommentListProps) => {
     return (
         <List
             style={{ position: 'relative', top: '20px' }}

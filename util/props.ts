@@ -1,4 +1,4 @@
-import { Post } from './post';
+import { Post, CommentData } from './post';
 import { BcategoryType } from './category';
 
 export interface PostProps {
@@ -11,5 +11,9 @@ export interface CategoryDrawerProps {
 };
 
 export interface CategoryListProps {
-    category: BcategoryType,
+    category: BcategoryType;
+};
+
+export interface CommentListProps {
+  Comments: CommentData[];
 };
