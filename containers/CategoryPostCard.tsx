@@ -2,17 +2,19 @@ import React, { useState, useCallback, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { Popover } from 'antd';
 import moment from 'moment';
 
+import Category from './PostCardContent/Category';
+import Bookmark from './PostCardContent/Bookmark';
+import Title from './PostCardContent/Title';
+import Avatar from './PostCardContent/Avatar';
+import Nickname from './PostCardContent/Nickname';
+import Time from './PostCardContent/Time';
+import Content from './PostCardContent/Content';
 import { RootState } from '../reducers';
 import { REMOVE_POST_REQUEST } from '../reducers/post';
 import { BOOKMARK_POST_REQUEST, UNBOOKMARK_POST_REQUEST } from '../reducers/user';
-import {
-    ContentDiv, DragA, StyledCard, StyledDivScategory, StyledBookFilled, StyledBookOutlined, StyledNoneDiv,
-    StyledDivTitle, StyledAvatar, StyledSpanNickname, StyledSpanTime, StyledButtonDelete, StyledButtonEdit, StyledCommentDiv,
-} from '../style/containers/PostCard';
-import { BookMarkType } from '../util/user';
+import { DragA, StyledCard, StyledButtonDelete, StyledButtonEdit, StyledCommentDiv } from '../style/containers/PostCard';
 import { PostProps } from '../util/props';
 
 moment.locale('ko');
@@ -23,8 +25,6 @@ const CommentForm = dynamic(() => import('./CommentForm'), { loading: () => <p>�
 const CategoryPostCard = ({ post }: PostProps) => {
     const dispatch = useDispatch();
     const admin = useSelector((state: RootState) => state.user.me?.admin);
-    const nickname = useSelector((state: RootState) => state.user.me?.nickname);
-    const BookMarked = useSelector((state: RootState) => state.user.me?.BookMarked);
     const { isRemovedPost } = useSelector((state: RootState) => state.post);
 
     const [toggleComment, setToggleComment] = useState(false);
@@ -48,19 +48,6 @@ const CategoryPostCard = ({ post }: PostProps) => {
         }
     }, []);
 
-    const bookmarkPost = useCallback(uuid => () => {
-        dispatch({
-            type: BOOKMARK_POST_REQUEST,
-            data: uuid,
-        });
-    }, []);
-    const unbookmarkPost = useCallback(uuid => () => {
-        dispatch({
-            type: UNBOOKMARK_POST_REQUEST,
-            data: uuid,
-        });
-    }, []);
-
     useEffect(() => {
         if (!countRef.current) {
             countRef.current = true;
@@ -76,37 +63,18 @@ const CategoryPostCard = ({ post }: PostProps) => {
         <StyledCard
             title={
                 <div>
-                    <StyledDivScategory>
-                        {post.scategory}
-                    </StyledDivScategory>
-                    <Popover content={<div>북마크</div>}>
-                        {nickname
-                            ? BookMarked?.find((p: BookMarkType) => p.uuid === post.uuid)
-                                ? <StyledBookFilled onClick={unbookmarkPost(post.uuid)}/>
-                                : <StyledBookOutlined onClick={bookmarkPost(post.uuid)}/>
-                            : <StyledNoneDiv></StyledNoneDiv> 
-                        }
-                    </Popover>
-                    <StyledDivTitle>
-                        {post.title}
-                    </StyledDivTitle>
+                    <Category scategory={post.scategory} />
+                    <Bookmark uuid={post.uuid} />
+                    <Title title={post.title} />
                     <br />
-                    <StyledAvatar>
-                        {post.User.nickname[0]}
-                    </StyledAvatar>
-                    <StyledSpanNickname>
-                        {post.User.nickname}
-                    </StyledSpanNickname>
-                    <StyledSpanTime>
-                        {moment(post.createdAt).format('YYYY-MM-DD HH:mm')}
-                    </StyledSpanTime>
+                    <Avatar avatar={post.User.nickname[0]} />
+                    <Nickname nickname={post.User.nickname} />
+                    <Time createdAt={post.createdAt} />
                 </div>
             }
             bordered={true}
         >
-            <ContentDiv className="post" dangerouslySetInnerHTML={{ __html: post.content }}>
-
-            </ContentDiv>
+            <Content content={post.content} />
             <DragA onClick={clickToggleComment}>
                 <u>댓글</u>
             </DragA>

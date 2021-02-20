@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 
 import Category from './PostCardContent/Category';
 import Bookmark from './PostCardContent/Bookmark';
-import PostCardTitle from './PostCardContent/PostCardTitle';
+import Title from './PostCardContent/Title';
 import Avatar from './PostCardContent/Avatar';
 import Nickname from './PostCardContent/Nickname';
 import Time from './PostCardContent/Time';
@@ -27,7 +27,7 @@ const PostCard = ({ post }: PostProps) => {
                 <div>
                     <Category scategory={post.scategory} />
                     <Bookmark uuid={post.uuid} />
-                    <PostCardTitle title={post.title} />
+                    <Title title={post.title} />
                     <br />
                     <Avatar avatar={post.User.nickname[0]} />
                     <Nickname nickname={post.User.nickname} />
