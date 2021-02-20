@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dropdown, Menu } from 'antd';
@@ -13,10 +13,17 @@ const UserProfile = () => {
     const nickname = useSelector((state: RootState) => state.user.me?.nickname);
     const admin = useSelector((state: RootState) => state.user.me?.admin);
 
+    const [rotate, setRotate] = useState(false);
+
     const clickLogout = useCallback(() => {
         dispatch({
             type: LOG_OUT_REQUEST,
         });
+    }, []);
+
+    const clickRotate = useCallback((e) => {
+      e.prevenDefault();
+      setRotate(rotate => !rotate);
     }, []);
 
     const menu = (
@@ -47,12 +54,12 @@ const UserProfile = () => {
     return (
         <StyledDiv>
             <Dropdown overlay={menu} trigger={['click']}>
-                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                    <StyledSpan>{`${nickname}님 `}<DownOutlined /></StyledSpan>
+                <a className="ant-dropdown-link" onClick={clickRotate}>
+                    <StyledSpan>{`${nickname}님 `}<DownOutlined rotate={rotate ? 180 : 0} /></StyledSpan>
                 </a>
             </Dropdown>
         </StyledDiv>
     );
 };
 
-export default UserProfile;
+export default memo(UserProfile);
