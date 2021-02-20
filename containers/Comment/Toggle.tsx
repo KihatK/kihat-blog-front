@@ -6,13 +6,13 @@ import { StyledCommentDiv } from '../../style/containers/PostCard';
 const CommentForm = dynamic(() => import('../CommentForm'), { loading: () => <p>로딩중...</p>, ssr: false });
 const CommentList = dynamic(() => import('../../components/CommentList'), { loading: () => <p>로딩중...</p>, ssr: false });
 
-const Toggle = ({ toggleComment, post, admin }) => {
+const Toggle = ({ toggleComment, Comments, uuid, admin }) => {
   return (
     <>
       {toggleComment ? (
         <StyledCommentDiv>
-          {admin && <CommentForm post={post} />}
-          <CommentList post={post} />
+          {admin && <CommentForm uuid={uuid} />}
+          <CommentList Comments={Comments} />
           <div>
             &nbsp;
           </div>

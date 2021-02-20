@@ -5,9 +5,8 @@ import { Form, Input } from 'antd';
 import { ADD_COMMENT_REQUEST } from '../reducers/post';
 import { RootState } from '../reducers';
 import { StyledButton } from '../style/containers/CommentForm';
-import { PostProps } from '../util/props';
 
-const CommentForm = ({ post }: PostProps) => {
+const CommentForm = ({ uuid }) => {
     const dispatch = useDispatch();
     const { isAddingComment, isAddedComment } = useSelector((state: RootState) => state.post);
 
@@ -23,7 +22,7 @@ const CommentForm = ({ post }: PostProps) => {
             type: ADD_COMMENT_REQUEST,
             data: {
                 comment,
-                postId: post.uuid,
+                postId: uuid,
             },
         });
     }, [comment]);

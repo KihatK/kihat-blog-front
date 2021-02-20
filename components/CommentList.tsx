@@ -2,17 +2,17 @@ import React from 'react';
 import { Avatar, Comment, List } from 'antd';
 import moment from 'moment';
 
-import { PostProps } from '../util/props';
+import { CommentData } from '../util/post';
 
 moment.locale('ko');
 
-const CommentList = ({ post }: PostProps) => {
+const CommentList = ({ Comments }: { Comments: CommentData[] }) => {
     return (
         <List
             style={{ position: 'relative', top: '20px' }}
-            header={`${post.Comments ? post.Comments.length : 0} 댓글`}
+            header={`${Comments ? Comments.length : 0} 댓글`}
             itemLayout="horizontal"
-            dataSource={post.Comments}
+            dataSource={Comments}
             renderItem={item => (
                 <li>
                     <Comment

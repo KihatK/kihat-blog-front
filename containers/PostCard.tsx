@@ -30,7 +30,7 @@ const PostCard = ({ post }: PostProps) => {
             bordered={true}
         >
             <Content content={post.content} />
-            <Comment post={post} admin={false} />
+            <Comment Comments={post.Comments} uuid={post.uuid} admin={false} />
         </StyledCard>
       </>
     );

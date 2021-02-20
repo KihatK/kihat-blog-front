@@ -66,7 +66,7 @@ const CategoryPostCard = ({ post }: PostProps) => {
             bordered={true}
         >
             <Content content={post.content} />
-            <Comment post={post} admin={admin} />
+            <Comment Comments={post.Comments} uuid={post.uuid} admin={admin} />
             {admin
                 && (
                     <>
