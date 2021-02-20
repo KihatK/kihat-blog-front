@@ -15,15 +15,15 @@ const UserProfile = () => {
 
     const [rotate, setRotate] = useState(false);
 
+    const clickRotate = useCallback((e) => {
+      e.preventDefault();
+      setRotate(rotate => !rotate);
+    }, []);
+
     const clickLogout = useCallback(() => {
         dispatch({
             type: LOG_OUT_REQUEST,
         });
-    }, []);
-
-    const clickRotate = useCallback((e) => {
-      e.prevenDefault();
-      setRotate(rotate => !rotate);
     }, []);
 
     const menu = (
