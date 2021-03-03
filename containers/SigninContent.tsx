@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Input, Button } from 'antd';
+import { Form, Button } from 'antd';
 
 import Username from './SignIn/Username';
 import Password from './SignIn/Password';
