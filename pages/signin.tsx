@@ -25,20 +25,12 @@ const SignIn = () => {
     useEffect(() => {
         if (nickname) {
             Router.push('/');
-            alert('이미 로그인중입니다.');
+            alert('이미 로그인 상태입니다.');
         }
     }, []);
 
     return (
         <>
-            {/* {nickname
-                ? (
-                    <h1 style={{ color: 'blue' }}>
-                        로딩중입니다. 잠시만 기다려주세요.
-                    </h1>
-                )
-                : <SigninContent/>
-            } */}
             <SigninContent/>
         </>
     );
