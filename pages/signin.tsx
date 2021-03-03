@@ -31,14 +31,15 @@ const SignIn = () => {
 
     return (
         <>
-            {nickname
+            {/* {nickname
                 ? (
                     <h1 style={{ color: 'blue' }}>
                         로딩중입니다. 잠시만 기다려주세요.
                     </h1>
                 )
                 : <SigninContent/>
-            }
+            } */}
+            <SigninContent/>
         </>
     );
 }
